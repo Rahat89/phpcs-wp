@@ -1,0 +1,53 @@
+{
+  "name": "vendor_name/wp-dev",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "rahat",
+      "email": "rahat@ar.com.bd"
+    }
+  ],
+  "require": {
+    "php": ">=5.6",
+    "squizlabs/php_codesniffer": "^3.3.1",
+    "friendsofphp/php-cs-fixer": "^3.5",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.5 || ^0.6 || ^0.7",
+    "phpcompatibility/php-compatibility": "^9.0",
+    "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0",
+    "phpcsstandards/phpcsdevtools": "^1.0"
+  },
+  "suggest": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.6 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
+  },
+  "minimum-stability": "RC",
+  "scripts": {
+    "check-cs": [
+      "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
+    ],
+    "fix-cs": [
+      "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+    ],
+    "install-codestandards": [
+      "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+    ],
+    "run-tests": [
+      "@php ./vendor/phpunit/phpunit/phpunit --filter WordPress --bootstrap=\"./vendor/squizlabs/php_codesniffer/tests/bootstrap.php\" ./vendor/squizlabs/php_codesniffer/tests/AllTests.php"
+    ],
+    "check-complete": [
+      "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness -q ./WordPress"
+    ],
+    "check-complete-strict": [
+      "@php ./vendor/phpcsstandards/phpcsdevtools/bin/phpcs-check-feature-completeness ./WordPress"
+    ]
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}

@@ -1,0 +1,40 @@
+logging:
+  receivers:
+    wordpress:
+      type: files
+      include_paths:
+        - /var/www/html/api.wpdeveloper.com/wp-content/debug.log
+    nginx_error:
+      type: nginx_error
+  processors:
+    custom_processor:
+      type: parse_multiline
+      match_any:
+        - type: language_exceptions
+          language: java
+  service:
+    pipelines:
+      default_pipeline:
+        receivers: []
+      custom_pipeline:
+        receivers: [wordpress]
+        processors: [custom_processor]
+      nginx:
+        receivers: [nginx_error]
+
+
+
+logging:
+  receivers:
+    wordpress:
+      type: files
+      include_paths:
+        - /var/www/html/api.wpdeveloper.com/wp-content/debug.log
+    nginx_error:
+      type: nginx_error
+  service:
+    pipelines:
+      default_pipeline:
+        receivers: [wordpress]
+      nginx:
+        receivers: [nginx_error]
