@@ -24,7 +24,6 @@
   "suggest": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.6 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
   },
-  "minimum-stability": "RC",
   "scripts": {
     "check-cs": [
       "./vendor/bin/phpcs --standard=WordPress"
