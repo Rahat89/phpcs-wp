@@ -27,10 +27,10 @@
   "minimum-stability": "RC",
   "scripts": {
     "check-cs": [
-      "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
+      "./vendor/bin/phpcs --standard=WordPress"
     ],
     "fix-cs": [
-      "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+      "./vendor/bin/phpcbf --standard=WordPress"
     ],
     "install-codestandards": [
       "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
